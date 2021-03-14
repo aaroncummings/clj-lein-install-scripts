@@ -1,0 +1,11 @@
+Setting up local leiningen:
+
+cd ~/tps
+
+export LEIN_VERSION="2.9.5"
+mkdir leiningen-${LEIN_VERSION}
+cd leiningen-${LEIN_VERSION}
+curl -L https://github.com/technomancy/leiningen/releases/download/${LEIN_VERSION}/leiningen-${LEIN_VERSION}-standalone.zip --output leiningen-${LEIN_VERSION}-standalone.jar
+curl -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein-pkg --output lein
+sed -i .orig '/^LEIN_JAR=/s|.*|LEIN_JAR='$PWD'/leiningen-'${LEIN_VERSION}'-standalone.jar|' lein
+chmod 700 lein
